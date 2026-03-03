@@ -29,7 +29,6 @@ html,body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-ser
 .scanlines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.1) 3px,rgba(0,0,0,.1) 4px)}
 .beam{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(0,229,255,.4),transparent);animation:beam 8s linear infinite}
 @keyframes beam{0%{top:-2px}100%{top:100vh}}
-
 .app{position:relative;z-index:1;display:flex;flex-direction:column;min-height:100vh}
 
 /* HEADER */
@@ -59,24 +58,42 @@ header{padding:0 16px;height:62px;display:flex;align-items:center;justify-conten
 
 /* MAIN */
 main{flex:1;padding:12px}
-@media(min-width:900px){main{padding:16px 24px;max-width:1600px;margin:0 auto}}
+@media(min-width:900px){main{padding:16px 24px;max-width:1800px;margin:0 auto}}
 
 /* SECTION LABEL */
 .slbl{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.25em;color:rgba(255,255,255,.2);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .slbl::before,.slbl::after{content:'';flex:1;height:1px;background:var(--border)}
 .slbl::before{flex:0 0 16px}
 
-/* STOCKS */
-.stocks-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
-.scard{border-radius:10px;padding:12px 10px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.07);background:rgba(8,12,18,.75);backdrop-filter:blur(8px)}
-.scard::before{content:'';position:absolute;inset:0;opacity:.06;background:var(--sc)}
-.scard::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--sc);box-shadow:0 0 12px var(--sc)}
-.scard.stank{--sc:var(--tank)}.scard.snavy{--sc:var(--navy)}.scard.sair{--sc:var(--air)}
-.sdept{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--sc);margin-bottom:4px}
-.snum{font-family:'Bebas Neue',cursive;font-size:clamp(22px,4vw,38px);color:var(--sc);line-height:1;text-shadow:0 0 24px var(--sc)}
-.sdelta{font-family:'Share Tech Mono',monospace;font-size:10px;margin-top:3px}
-.spts{font-size:10px;color:rgba(255,255,255,.25);margin-top:2px}
-.spark{width:100%;height:26px;margin-top:6px}
+/* ── 9 INFO CARDS ── */
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
+@media(min-width:700px){.info-grid{grid-template-columns:repeat(9,1fr)}}
+
+/* each mini card */
+.icard{border-radius:9px;padding:10px 8px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.07);background:rgba(8,12,18,.8);backdrop-filter:blur(8px);text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
+.icard::before{content:'';position:absolute;inset:0;opacity:.05;background:var(--ic)}
+.icard::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--ic);box-shadow:0 0 10px var(--ic)}
+/* tank group */
+.icard.tank1,.icard.tank2,.icard.tank3{--ic:var(--tank)}
+/* navy group */
+.icard.navy1,.icard.navy2,.icard.navy3{--ic:var(--navy)}
+/* air group */
+.icard.air1,.icard.air2,.icard.air3{--ic:var(--air)}
+
+.icard-emoji{font-size:16px;line-height:1}
+.icard-label{font-family:'Share Tech Mono',monospace;font-size:7px;color:rgba(255,255,255,.3);letter-spacing:.12em;text-transform:uppercase;line-height:1.2;text-align:center}
+.icard-val{font-family:'Bebas Neue',cursive;font-size:clamp(18px,3vw,26px);color:var(--ic);text-shadow:0 0 14px var(--ic);line-height:1}
+.icard-sub{font-family:'Share Tech Mono',monospace;font-size:7px;color:rgba(255,255,255,.22);letter-spacing:.08em}
+
+/* divider line between groups on mobile */
+.icard.navy1{border-top:2px solid rgba(0,180,255,.15)}
+.icard.air1{border-top:2px solid rgba(192,132,252,.15)}
+@media(min-width:700px){
+  .icard.navy1,.icard.air1{border-top:1px solid rgba(255,255,255,.07)}
+  /* vertical separators between groups */
+  .icard.navy1{border-left:1px solid rgba(0,180,255,.2)}
+  .icard.air1{border-left:1px solid rgba(192,132,252,.2)}
+}
 
 /* TEAMS GRID */
 .tgrid{display:grid;gap:10px;grid-template-columns:1fr}
@@ -93,7 +110,6 @@ main{flex:1;padding:12px}
 .tcard.r2{border-color:rgba(192,192,192,.4)}.tcard.r3{border-color:rgba(205,127,50,.4)}
 .stripe{position:absolute;top:0;left:0;bottom:0;width:4px;background:var(--tc);box-shadow:2px 0 16px var(--tc)}
 
-/* card head */
 .chead{padding:10px 12px 8px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.05);background:rgba(0,0,0,.2);gap:8px}
 .crank{font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,255,255,.2);letter-spacing:.12em;line-height:1;margin-bottom:2px}
 .crank.gold{color:var(--gold);font-size:12px}
@@ -103,29 +119,24 @@ main{flex:1;padding:12px}
 .score-val{font-family:'Bebas Neue',cursive;font-size:clamp(22px,3.5vw,30px);color:var(--score);text-shadow:0 0 20px rgba(255,107,0,.5);line-height:1}
 .score-unit{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,107,0,.5);margin-left:2px}
 
-/* card body */
 .cbody{padding:10px 12px 12px 16px}
 
-/* TOTAL WEALTH — prominent purple block */
+/* TOTAL WEALTH */
 .wealth-section{background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.2);border-radius:8px;padding:8px 10px;margin-bottom:10px}
 .wealth-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:5px}
 .wealth-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--wealth);letter-spacing:.15em;opacity:.8}
 .wealth-val{font-family:'Bebas Neue',cursive;font-size:26px;color:var(--wealth);text-shadow:0 0 18px rgba(167,139,250,.5);line-height:1}
 .wealth-unit{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(167,139,250,.4);margin-left:3px}
 .wealth-bar{height:3px;background:rgba(167,139,250,.1);border-radius:2px;overflow:hidden;margin-bottom:8px}
-.wealth-fill{height:100%;background:linear-gradient(90deg,rgba(167,139,250,.4),rgba(167,139,250,.9));border-radius:2px;transition:width .8s ease}
+.wealth-fill{height:100%;background:linear-gradient(90deg,rgba(167,139,250,.4),rgba(167,139,250,.9));border-radius:2px}
 .wealth-breakdown{display:flex;flex-direction:column;gap:2px}
 .wb-row{display:flex;justify-content:space-between;align-items:center;font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.3);padding:1px 0}
 .wb-lbl{color:rgba(0,229,255,.6)}
 .wb-num{color:rgba(255,255,255,.5);font-size:9px}
 .wb-row.wb-total{border-top:1px solid rgba(167,139,250,.15);margin-top:3px;padding-top:4px}
 .wb-row.wb-total .wb-num{color:var(--wealth);font-family:'Bebas Neue',cursive;font-size:14px}
-
-/* stock portfolio rows inside wealth */
 .stock-row{display:flex;justify-content:space-between;align-items:center;font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.25);padding:1px 0}
-.sr-label{flex:1}
-.sr-qty{color:rgba(255,255,255,.2);margin:0 8px}
-.sr-val{color:rgba(255,255,255,.4);min-width:30px;text-align:right}
+.sr-label{flex:1}.sr-qty{color:rgba(255,255,255,.2);margin:0 8px}.sr-val{color:rgba(255,255,255,.4);min-width:30px;text-align:right}
 
 /* bonus */
 .bonus-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding:4px 0}
@@ -148,7 +159,7 @@ main{flex:1;padding:12px}
 /* score breakdown */
 .score-breakdown{margin-top:8px;background:rgba(255,107,0,.05);border:1px solid rgba(255,107,0,.12);border-radius:6px;padding:6px 8px}
 .sb-row{display:flex;justify-content:space-between;align-items:center;font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.3);padding:2px 0}
-.sb-row.total{border-top:1px solid rgba(255,107,0,.15);margin-top:3px;padding-top:5px;color:var(--score);font-size:9px}
+.sb-row.total{border-top:1px solid rgba(255,107,0,.15);margin-top:3px;padding-top:5px;color:var(--score)}
 .sb-val{color:var(--score);font-size:9px}
 .sb-row.total .sb-val{font-family:'Bebas Neue',cursive;font-size:16px}
 
@@ -160,7 +171,6 @@ main{flex:1;padding:12px}
 @keyframes blk{0%,100%{opacity:1}50%{opacity:.25}}
 .errbox{margin:24px auto;max-width:420px;text-align:center;background:rgba(255,60,90,.05);border:1px solid rgba(255,60,90,.18);border-radius:10px;padding:24px}
 .errm{font-family:'Share Tech Mono',monospace;font-size:10px;color:rgba(255,110,130,.75);margin-top:8px;line-height:1.6}
-
 footer{text-align:center;padding:12px;font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.12em;border-top:1px solid var(--border);background:rgba(4,6,10,.8)}
 </style>
 </head>
@@ -171,7 +181,6 @@ footer{text-align:center;padding:12px;font-family:'Share Tech Mono',monospace;fo
   <div class="orb o3"></div><div class="orb o4"></div><div class="orb o5"></div>
   <div class="scanlines"></div><div class="beam"></div>
 </div>
-
 <div class="app">
   <header>
     <div class="logo">⚔ Hostile Takeover</div>
@@ -190,8 +199,8 @@ footer{text-align:center;padding:12px;font-family:'Share Tech Mono',monospace;fo
 
   <div class="legend">
     <div class="leg-item"><div class="leg-dot" style="background:var(--score)"></div><span style="color:var(--score)">SCORE — ranking</span></div>
-    <div class="leg-item"><div class="leg-dot" style="background:var(--wealth)"></div><span style="color:var(--wealth)">TOTAL WEALTH — liquid + stock portfolio</span></div>
-    <div class="leg-item"><div class="leg-dot" style="background:var(--capital)"></div><span style="color:var(--capital)">CAPITAL — liquid cash only</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--wealth)"></div><span style="color:var(--wealth)">TOTAL WEALTH — liquid + stocks</span></div>
+    <div class="leg-item"><div class="leg-dot" style="background:var(--capital)"></div><span style="color:var(--capital)">CAPITAL — liquid only</span></div>
     <div class="leg-item"><div class="leg-dot" style="background:var(--gold)"></div><span style="color:var(--gold)">BONUS — battle rewards</span></div>
   </div>
 
@@ -207,9 +216,7 @@ footer{text-align:center;padding:12px;font-family:'Share Tech Mono',monospace;fo
 </div>
 
 <script>
-// ── YOUR SHEET ID ──
 const SHEET_ID = '1A23UY1LWW8KSCT0VVhZjj8QJXVjeR4h27LvdWkzYwVE';
-// ──────────────────
 
 const COLORS=[
   {h:'#ff3c5a',r:'255,60,90'},{h:'#00e5ff',r:'0,229,255'},{h:'#ffe600',r:'255,230,0'},
@@ -217,11 +224,14 @@ const COLORS=[
   {h:'#00ffcc',r:'0,255,204'},{h:'#ff60b0',r:'255,96,176'},{h:'#60b0ff',r:'96,176,255'},
   {h:'#ff9900',r:'255,153,0'},{h:'#ccff00',r:'204,255,0'},{h:'#ff4488',r:'255,68,136'},
 ];
+
+// ── KEY FIX: destroyedKey matches EXACT sheet column names ──
 const VC={
-  Tanks:    {e:'🪖',t:'TANK',c:'vtank'},
-  NavySeals:{e:'⚓',t:'NAVY',c:'vnavy'},
-  AirForce: {e:'✈', t:'AIR', c:'vair'},
+  Tanks:    {e:'🪖', t:'TANK', c:'vtank', destroyedKey:'TanksDestroyed'},
+  NavySeals:{e:'⚓', t:'NAVY', c:'vnavy', destroyedKey:'NavyDestroyed'},
+  AirForce: {e:'✈',  t:'AIR',  c:'vair',  destroyedKey:'AirDestroyed'},
 };
+
 let hist={TANK:[],NAVY:[],AIR:[]};
 let countdown=5;
 
@@ -229,7 +239,7 @@ let countdown=5;
 function startCountdown(){
   setInterval(()=>{
     countdown--;
-    if(countdown<=0){ countdown=5; go(); }
+    if(countdown<=0){countdown=5;go();}
     tickCD();
   },1000);
   tickCD();
@@ -237,15 +247,15 @@ function startCountdown(){
 function tickCD(){
   const ring=document.getElementById('cring');
   const txt=document.getElementById('ctxt');
-  if(ring){ ring.style.strokeDashoffset=62.8-(62.8*(countdown/5)); ring.style.stroke=countdown>2?'var(--capital)':'var(--gold)'; }
-  if(txt) txt.textContent=countdown;
+  if(ring){ring.style.strokeDashoffset=62.8-(62.8*(countdown/5));ring.style.stroke=countdown>2?'var(--capital)':'var(--gold)';}
+  if(txt)txt.textContent=countdown;
 }
 
-// ── FETCH — double cache-bust ──
+// ── FETCH ──
 async function fetchTab(tab){
   const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(tab)}&t=${Date.now()}&r=${Math.random().toString(36).slice(2)}`;
   const r=await fetch(url,{cache:'no-store'});
-  if(!r.ok) throw new Error(`HTTP ${r.status} on tab "${tab}"`);
+  if(!r.ok)throw new Error(`HTTP ${r.status} on tab "${tab}"`);
   const txt=await r.text();
   const j=JSON.parse(txt.substring(txt.indexOf('{'),txt.lastIndexOf('}')+1));
   const cols=j.table.cols.map(c=>c.label||c.id);
@@ -254,82 +264,100 @@ async function fetchTab(tab){
   });
 }
 
-// ── MAIN ──
 async function go(){
   try{
     const[tRows,sRows,pRows]=await Promise.all([fetchTab('Teams'),fetchTab('Stocks'),fetchTab('Prices')]);
     render(tRows,sRows,pRows);
     document.getElementById('syncTxt').textContent='SYNCED '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  }catch(e){ showErr(e.message); }
+  }catch(e){showErr(e.message);}
 }
 
 function render(tRows,sRows,pRows){
   document.getElementById('loader').style.display='none';
 
-  // stock prices map
+  // stock map
   const sm={};
-  sRows.forEach(r=>{ const k=(r['Department']||'').toUpperCase().trim(); sm[k]={price:parseFloat(r['Price'])||0,change:parseFloat(r['Change'])||0}; });
+  sRows.forEach(r=>{const k=(r['Department']||'').toUpperCase().trim();sm[k]={price:parseFloat(r['Price'])||0,change:parseFloat(r['Change'])||0};});
 
-  // vehicle prices/points map
+  // prices/points map — keyed by Vehicle column
   const pm={};
-  pRows.forEach(r=>{ const v=(r['Vehicle']||'').trim(); pm[v]={price:parseFloat(r['Price'])||0,points:parseFloat(r['Points'])||0}; });
+  pRows.forEach(r=>{const v=(r['Vehicle']||'').trim();pm[v]={price:parseFloat(r['Price'])||0,points:parseFloat(r['Points'])||0};});
 
   // sparkline history
-  ['TANK','NAVY','AIR'].forEach(k=>{ const p=sm[k]?.price||0; if(p){hist[k].push(p);if(hist[k].length>24)hist[k].shift();} });
+  ['TANK','NAVY','AIR'].forEach(k=>{const p=sm[k]?.price||0;if(p){hist[k].push(p);if(hist[k].length>24)hist[k].shift();}});
 
-  // build teams with all calculated values
+  // build + score teams
   const teams=tRows.filter(r=>r['TeamName']).map(team=>{
-    // score points (determines ranking)
     let vs=0;
-    Object.keys(VC).forEach(vk=>{
-      const alive=Math.max(0,(parseInt(team[vk])||0)-(parseInt(team[vk+'Destroyed'])||0));
+    Object.entries(VC).forEach(([vk,vc])=>{
+      const owned=parseInt(team[vk])||0;
+      // ✅ use exact destroyedKey from VC config, not vk+'Destroyed'
+      const dead=parseInt(team[vc.destroyedKey])||0;
+      const alive=Math.max(0,owned-dead);
       vs+=alive*(pm[vk]?.points||0);
     });
     const bonus=parseFloat(team['BonusPoints'])||0;
-
-    // wealth = liquid capital + stock portfolio value
     const liquid=parseFloat(team['Capital'])||0;
     const tankS=parseInt(team['TankStocks'])||0;
     const navyS=parseInt(team['NavyStocks'])||0;
     const airS=parseInt(team['AirStocks'])||0;
     const stockVal=(tankS*(sm['TANK']?.price||0))+(navyS*(sm['NAVY']?.price||0))+(airS*(sm['AIR']?.price||0));
-
-    return{...team,
-      _score:vs+bonus, _vs:vs, _bonus:bonus,
-      _liquid:liquid, _tankS:tankS, _navyS:navyS, _airS:airS,
-      _stockVal:stockVal, _wealth:liquid+stockVal
-    };
+    return{...team,_score:vs+bonus,_vs:vs,_bonus:bonus,_liquid:liquid,_tankS:tankS,_navyS:navyS,_airS:airS,_stockVal:stockVal,_wealth:liquid+stockVal};
   });
-
-  // rank by score points
   teams.sort((a,b)=>b._score-a._score);
 
-  // full rebuild every cycle — guaranteed fresh
   document.getElementById('mainArea').innerHTML=buildAll(teams,sm,pm);
   setTimeout(()=>drawSparks(sm),60);
   updTicker(teams,sm);
   document.getElementById('ft').textContent=`◈ LAST SYNC: ${new Date().toLocaleTimeString()} ◈ ${teams.length} TEAMS ◈ RANKED BY SCORE ◈`;
 }
 
-function buildAll(teams,sm,pm){
-  return buildStocks(sm,pm)+`<div class="slbl">TEAM STANDINGS — RANKED BY SCORE</div><div class="tgrid">${teams.map((t,i)=>card(t,i,pm,sm)).join('')}</div>`;
+// ── 9 INFO CARDS ──
+function buildInfoCards(sm,pm){
+  // 3 groups × 3 cards each: Stock Price | Vehicle Price | Points per unit
+  const groups=[
+    {color:'tank', emoji:'🪖', name:'Tank',  stockKey:'TANK', vehicleKey:'Tanks',     classes:['tank1','tank2','tank3']},
+    {color:'navy', emoji:'⚓', name:'Navy',  stockKey:'NAVY', vehicleKey:'NavySeals', classes:['navy1','navy2','navy3']},
+    {color:'air',  emoji:'✈',  name:'Air',   stockKey:'AIR',  vehicleKey:'AirForce',  classes:['air1', 'air2', 'air3']},
+  ];
+
+  const cards=groups.flatMap(({color,emoji,name,stockKey,vehicleKey,classes})=>{
+    const stockPrice=sm[stockKey]?.price??'—';
+    const ch=sm[stockKey]?.change||0;
+    const vPrice=pm[vehicleKey]?.price??'—';
+    const vPts=pm[vehicleKey]?.points??'—';
+    const chStr=ch>0?`▲+${ch}`:ch<0?`▼${ch}`:'';
+    const chColor=ch>0?'var(--tank)':ch<0?'var(--red)':'rgba(255,255,255,.2)';
+    return[
+      // Card 1: Stock price
+      `<div class="icard ${classes[0]}">
+        <div class="icard-emoji">${emoji}</div>
+        <div class="icard-label">${name} Stock</div>
+        <div class="icard-val">${stockPrice}</div>
+        ${ch!==0?`<div class="icard-sub" style="color:${chColor}">${chStr}</div>`:'<div class="icard-sub">per share</div>'}
+      </div>`,
+      // Card 2: Vehicle cost
+      `<div class="icard ${classes[1]}">
+        <div class="icard-emoji">${emoji}</div>
+        <div class="icard-label">${name} Cost</div>
+        <div class="icard-val">${vPrice}</div>
+        <div class="icard-sub">capital / unit</div>
+      </div>`,
+      // Card 3: Points per vehicle
+      `<div class="icard ${classes[2]}">
+        <div class="icard-emoji">${emoji}</div>
+        <div class="icard-label">${name} Points</div>
+        <div class="icard-val">${vPts}</div>
+        <div class="icard-sub">pts / unit</div>
+      </div>`,
+    ];
+  });
+
+  return`<div class="slbl">MARKET & VEHICLE REFERENCE</div><div class="info-grid">${cards.join('')}</div>`;
 }
 
-function buildStocks(sm,pm){
-  const cfg=[
-    {k:'TANK',c:'stank',e:'🪖',vk:'Tanks',    label:'Tank Stock'},
-    {k:'NAVY',c:'snavy',e:'⚓',vk:'NavySeals', label:'Navy Stock'},
-    {k:'AIR', c:'sair', e:'✈', vk:'AirForce',  label:'Air Stock'},
-  ];
-  return`<div class="slbl">LIVE MARKET PRICES</div><div class="stocks-bar">${cfg.map(({k,c,e,vk,label})=>{
-    const d=sm[k]||{price:0,change:0};const ch=d.change;
-    return`<div class="scard ${c}">
-      <div class="sdept">${e} ${label}</div>
-      <div class="snum">${d.price}</div>
-      <div class="sdelta ${ch>0?'tup':ch<0?'tdn':'tfl'}">${ch>0?'▲ +'+ch:ch<0?'▼ '+ch:'— 0'}</div>
-      <canvas class="spark" id="sk-${k}"></canvas>
-    </div>`;
-  }).join('')}</div>`;
+function buildAll(teams,sm,pm){
+  return buildInfoCards(sm,pm)+`<div class="slbl">TEAM STANDINGS — RANKED BY SCORE</div><div class="tgrid">${teams.map((t,i)=>card(t,i,pm,sm)).join('')}</div>`;
 }
 
 function card(team,idx,pm,sm){
@@ -339,17 +367,20 @@ function card(team,idx,pm,sm){
   const bonus=team._bonus||0;
   const wealthPct=Math.min(100,(team._wealth/600)*100);
 
-  // vehicle breakdown
+  // ✅ vehicle breakdown using correct destroyedKey
   const vb=Object.entries(VC).map(([vk,vc])=>{
-    const owned=parseInt(team[vk])||0;const dead=parseInt(team[vk+'Destroyed'])||0;
-    const alive=Math.max(0,owned-dead);const pts=pm[vk]?.points||0;
+    const owned=parseInt(team[vk])||0;
+    const dead=parseInt(team[vc.destroyedKey])||0;
+    const alive=Math.max(0,owned-dead);
+    const pts=pm[vk]?.points||0;
     return{vc,owned,dead,alive,pts,sub:alive*pts,wiped:owned>0&&alive===0};
   });
 
   const vhml=vb.map(({vc,alive,sub,wiped,owned,dead})=>`
     <div class="vtile ${vc.c} ${wiped?'wiped':''}">
       <div class="vemo">${vc.e}</div><div class="vtag">${vc.t}</div>
-      <div class="valive">${alive}</div><div class="vpts">${sub} pts</div>
+      <div class="valive">${alive}</div>
+      <div class="vpts">${sub} pts</div>
       <div class="vsub">${owned?dead+' lost':'none'}</div>
     </div>`).join('');
 
@@ -357,34 +388,24 @@ function card(team,idx,pm,sm){
     `<div class="sb-row"><span>${vc.e} ${vc.t} (${alive}×${pts})</span><span class="sb-val">${sub}</span></div>`
   ).join('');
 
-  // stock portfolio rows
   const stockPortfolio=[
-    {e:'🪖',lbl:'Tank Stock',  n:team._tankS, price:sm['TANK']?.price||0},
-    {e:'⚓',lbl:'Navy Stock',  n:team._navyS, price:sm['NAVY']?.price||0},
-    {e:'✈', lbl:'Air Stock',   n:team._airS,  price:sm['AIR']?.price||0},
-  ].map(({e,lbl,n,price})=>
-    `<div class="stock-row">
+    {e:'🪖',lbl:'Tank Stock', n:team._tankS,price:sm['TANK']?.price||0},
+    {e:'⚓',lbl:'Navy Stock', n:team._navyS,price:sm['NAVY']?.price||0},
+    {e:'✈', lbl:'Air Stock',  n:team._airS, price:sm['AIR']?.price||0},
+  ].map(({e,lbl,n,price})=>`
+    <div class="stock-row">
       <span class="sr-label">${e} ${lbl}</span>
       <span class="sr-qty">${n} × ${price}</span>
       <span class="sr-val">${n*price}</span>
-    </div>`
-  ).join('');
+    </div>`).join('');
 
   return`<div class="tcard ${rankClass}" style="--tc:${c.h};--tcr:${c.r};">
     <div class="stripe"></div>
     <div class="chead">
-      <div>
-        <div class="crank ${idx===0?'gold':''}">${rankLabel}</div>
-        <div class="cname">${team['TeamName']||'?'}</div>
-      </div>
-      <div class="score-box">
-        <div class="score-lbl">SCORE</div>
-        <div class="score-val">${team._score}<span class="score-unit">PTS</span></div>
-      </div>
+      <div><div class="crank ${idx===0?'gold':''}">${rankLabel}</div><div class="cname">${team['TeamName']||'?'}</div></div>
+      <div class="score-box"><div class="score-lbl">SCORE</div><div class="score-val">${team._score}<span class="score-unit">PTS</span></div></div>
     </div>
     <div class="cbody">
-
-      <!-- TOTAL WEALTH -->
       <div class="wealth-section">
         <div class="wealth-top">
           <div class="wealth-lbl">◈ TOTAL WEALTH</div>
@@ -397,18 +418,14 @@ function card(team,idx,pm,sm){
           <div class="wb-row wb-total"><span>📊 Stock Portfolio</span><span class="wb-num">${team._stockVal}</span></div>
         </div>
       </div>
-
       ${bonus>0?`<div class="bonus-row"><div class="bonus-lbl">⚔ BATTLE BONUS</div><div class="bonus-val">+${bonus}</div></div>`:''}
-
       <div class="vlbl">◈ VEHICLES · ALIVE / SCORE</div>
       <div class="vrow">${vhml}</div>
-
       <div class="score-breakdown">
         ${sbRows}
         ${bonus>0?`<div class="sb-row"><span>⚔ BATTLE BONUS</span><span class="sb-val" style="color:var(--gold)">${bonus}</span></div>`:''}
         <div class="sb-row total"><span>TOTAL SCORE</span><span class="sb-val">${team._score}</span></div>
       </div>
-
     </div>
   </div>`;
 }
@@ -435,23 +452,16 @@ function updTicker(teams,sm){
     parts.push(`<span class="ti"><span class="lb">${k} Stock</span><span class="vl ${ch>0?'tup':ch<0?'tdn':'tfl'}">${d.price} ${ch>0?'▲+'+ch:ch<0?'▼'+ch:'—'}</span></span>`);
   });
   parts.push('<span class="ti" style="opacity:.2;margin:0 12px">◈</span>');
-  teams.forEach((t,i)=>{
-    parts.push(`<span class="ti"><span class="lb">#${i+1} ${t['TeamName']}:</span><span class="vl" style="color:var(--score)">${t._score} PTS</span></span>`);
-  });
+  teams.forEach((t,i)=>{parts.push(`<span class="ti"><span class="lb">#${i+1} ${t['TeamName']}:</span><span class="vl" style="color:var(--score)">${t._score} PTS</span></span>`);});
   const tr=document.getElementById('ttrack');
-  if(tr) tr.innerHTML=[...parts,...parts].join('');
+  if(tr)tr.innerHTML=[...parts,...parts].join('');
 }
 
 function showErr(msg){
   document.getElementById('loader').style.display='none';
   const m=document.getElementById('mainArea');
   if(!document.getElementById('eb'))
-    m.insertAdjacentHTML('afterbegin',`<div class="errbox" id="eb">
-      <div style="font-size:30px;margin-bottom:8px">⚠</div>
-      <strong style="color:#ff6070;font-family:'Bebas Neue',cursive;font-size:18px">DATA FEED ERROR</strong>
-      <div class="errm" id="em">${msg}</div>
-      <div class="errm" style="margin-top:6px;opacity:.5">Check: sheet is public · tabs: Teams, Stocks, Prices</div>
-    </div>`);
+    m.insertAdjacentHTML('afterbegin',`<div class="errbox" id="eb"><div style="font-size:30px;margin-bottom:8px">⚠</div><strong style="color:#ff6070;font-family:'Bebas Neue',cursive;font-size:18px">DATA FEED ERROR</strong><div class="errm" id="em">${msg}</div><div class="errm" style="margin-top:6px;opacity:.5">Check: sheet is public · tabs: Teams, Stocks, Prices</div></div>`);
   else document.getElementById('em').textContent=msg;
 }
 
@@ -460,5 +470,3 @@ startCountdown();
 </script>
 </body>
 </html>
-
-
