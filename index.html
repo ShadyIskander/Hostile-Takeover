@@ -67,7 +67,7 @@ header{padding:0 16px;height:62px;display:flex;align-items:center;justify-conten
 main{flex:1;padding:12px}
 @media(min-width:900px){main{padding:16px 24px;max-width:1800px;margin:0 auto}}
 
-.slbl{font-family:'Inter',sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.85);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.slbl{font-family:'Inter',sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;color:#8AA0C4;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .slbl::before,.slbl::after{content:'';flex:1;height:1px;background:var(--border)}
 .slbl::before{flex:0 0 16px}
 
@@ -86,7 +86,7 @@ main{flex:1;padding:12px}
 .icard-val{font-family:'Bebas Neue',cursive;font-size:clamp(18px,3vw,26px);color:var(--ic);line-height:1}
 
 /* ── CHANGE 1: Stock price change text — much larger ── */
-.icard-sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:rgba(255,255,255,.85);letter-spacing:.08em;font-weight:700}
+.icard-sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:#F5F3F5;letter-spacing:.08em;font-weight:700}
 
 .icard.navy1{border-top:2px solid rgba(68,114,196,.3)}
 .icard.air1{border-top:2px solid rgba(138,158,106,.3)}
@@ -321,19 +321,19 @@ function buildInfoCards(sm,pm){
         <div class="icard-emoji">${emoji}</div>
         <div class="icard-label">${name} Stock</div>
         <div class="icard-val">${stockPrice}</div>
-        ${ch!==0?`<div class="icard-sub" style="color:${chColor}">${chStr}</div>`:'<div class="icard-sub" style="color:#5A6E8A">per share</div>'}
+        ${ch!==0?`<div class="icard-sub" style="color:${chColor}">${chStr}</div>`:'<div class="icard-sub" style="color:#F5F3F5">per share</div>'}
       </div>`,
       `<div class="icard ${classes[1]}">
         <div class="icard-emoji">${emoji}</div>
         <div class="icard-label">${name} Cost</div>
         <div class="icard-val">${vPrice}</div>
-        <div class="icard-sub">capital / unit</div>
+        <div class="icard-sub"style="color:#F5F3F5">capital / unit</div>
       </div>`,
       `<div class="icard ${classes[2]}">
         <div class="icard-emoji">${emoji}</div>
         <div class="icard-label">${name} Points</div>
         <div class="icard-val">${vPts}</div>
-        <div class="icard-sub"pts / unit</div>
+        <div class="icard-sub"style="color:#F5F3F5">pts / unit</div>
       </div>`,
     ];
   });
@@ -446,5 +446,6 @@ startCountdown();
 </script>
 </body>
 </html>
+
 
 
