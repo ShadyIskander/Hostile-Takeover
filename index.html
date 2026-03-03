@@ -8,38 +8,26 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  /* ── NEW PALETTE ──────────────────────────────────
-     Space Indigo  #1B264F   bg base
-     French Blue   #274690   primary accent
-     Smart Blue    #576CA8   secondary / muted accent
-     Graphite      #302B27   warm dark panels
-     White Smoke   #F5F3F5   text
-     Olive         #7A8C5E   bonus / battle accent
-  ─────────────────────────────────────────────── */
-  --bg:#151c36;          /* slightly deeper than 1B264F for true dark base */
-  --bg2:#1B264F;         /* Space Indigo */
-  --bg3:#302B27;         /* Graphite — warm panel bg */
-
-  --primary:#274690;     /* French Blue */
-  --secondary:#576CA8;   /* Smart Blue */
-  --olive:#7A8C5E;       /* Olive — replaces all neon gold/yellow */
-  --text:#F5F3F5;        /* White Smoke */
-  --muted:#576CA8;       /* Smart Blue as muted text */
+  --bg:#151c36;
+  --bg2:#1B264F;
+  --bg3:#302B27;
+  --primary:#274690;
+  --secondary:#576CA8;
+  --olive:#7A8C5E;
+  --text:#F5F3F5;
+  --muted:#576CA8;
   --border:rgba(87,108,168,0.18);
-
-  /* semantic aliases — all pointing to new palette */
-  --tank:#576CA8;        /* Smart Blue for tank group */
-  --navy:#274690;        /* French Blue for navy group */
-  --air:#7A8C5E;         /* Olive for air group */
-  --gold:#7A8C5E;        /* Olive replaces yellow */
-  --score:#F5F3F5;       /* White Smoke for score numbers */
-  --capital:#576CA8;     /* Smart Blue for capital */
-  --wealth:#7A8C5E;      /* Olive for wealth */
-  --red:#8B5E6A;         /* muted rose — down indicators */
+  --tank:#576CA8;
+  --navy:#274690;
+  --air:#7A8C5E;
+  --gold:#7A8C5E;
+  --score:#F5F3F5;
+  --capital:#576CA8;
+  --wealth:#7A8C5E;
+  --red:#8B5E6A;
 }
 html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden}
 
-/* BG */
 .bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .orb{position:absolute;border-radius:50%;filter:blur(140px);opacity:.12;animation:orbF linear infinite}
 .o1{width:700px;height:700px;background:#1B264F;top:-250px;left:-100px;animation-duration:28s}
@@ -54,7 +42,6 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
 @keyframes beam{0%{top:-2px}100%{top:100vh}}
 .app{position:relative;z-index:1;display:flex;flex-direction:column;min-height:100vh}
 
-/* HEADER */
 header{padding:0 16px;height:62px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(15,20,40,.9);backdrop-filter:blur(16px);position:sticky;top:0;z-index:50;gap:10px}
 .logo{font-family:'Bebas Neue',cursive;font-size:clamp(18px,4vw,30px);letter-spacing:.1em;background:linear-gradient(90deg,#274690,#576CA8,#7A8C5E,#576CA8,#274690);background-size:400%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:ls 8s linear infinite;white-space:nowrap}
 @keyframes ls{0%{background-position:0%}100%{background-position:400%}}
@@ -67,48 +54,40 @@ header{padding:0 16px;height:62px;display:flex;align-items:center;justify-conten
 .cdown{position:relative;width:26px;height:26px;flex-shrink:0}
 .cdown-txt{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Share Tech Mono',monospace;font-size:7px;color:var(--secondary)}
 
-/* LEGEND */
 .legend{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:6px 12px;background:rgba(10,14,30,.7);border-bottom:1px solid var(--border);font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:.08em}
 .leg-item{display:flex;align-items:center;gap:4px}
 .leg-dot{width:7px;height:7px;border-radius:2px;flex-shrink:0}
 
-/* TICKER */
 .ticker{background:rgba(10,14,30,.95);border-bottom:1px solid var(--border);height:28px;display:flex;align-items:center;overflow:hidden;flex-shrink:0}
 .ttrack{display:flex;gap:50px;white-space:nowrap;animation:tick 30s linear infinite;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.1em}
 @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .ti{color:var(--muted)}.ti .lb{margin-right:5px}.ti .vl{font-weight:700}
 .tup{color:var(--olive)}.tdn{color:var(--red)}.tfl{color:var(--muted)}
 
-/* MAIN */
 main{flex:1;padding:12px}
 @media(min-width:900px){main{padding:16px 24px;max-width:1800px;margin:0 auto}}
 
-/* SECTION LABEL */
 .slbl{font-family:'Inter',sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;color:#8AA0C4;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .slbl::before,.slbl::after{content:'';flex:1;height:1px;background:var(--border)}
 .slbl::before{flex:0 0 16px}
 
-/* ── 9 INFO CARDS ── */
 .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
 @media(min-width:700px){.info-grid{grid-template-columns:repeat(9,1fr)}}
 
-/* each mini card */
 .icard{border-radius:9px;padding:10px 8px;position:relative;overflow:hidden;border:1px solid rgba(87,108,168,.2);background:rgba(20,28,58,.9);backdrop-filter:blur(8px);text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
 .icard::before{content:'';position:absolute;inset:0;opacity:.07;background:var(--ic)}
 .icard::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--ic)}
-/* tank group — Smart Blue */
 .icard.tank1,.icard.tank2,.icard.tank3{--ic:#576CA8}
-/* navy group — French Blue */
 .icard.navy1,.icard.navy2,.icard.navy3{--ic:#4472C4}
-/* air group — Olive */
 .icard.air1,.icard.air2,.icard.air3{--ic:#8A9E6A}
 
 .icard-emoji{font-size:16px;line-height:1}
 .icard-label{font-family:'Inter',sans-serif;font-weight:700;font-size:11px;color:#C8D4E8;letter-spacing:.03em;text-transform:uppercase;line-height:1.3;text-align:center}
 .icard-val{font-family:'Bebas Neue',cursive;font-size:clamp(18px,3vw,26px);color:var(--ic);line-height:1}
-.icard-sub{font-family:'Share Tech Mono',monospace;font-size:7px;color:#F5F3F5;letter-spacing:.08em}
 
-/* divider line between groups on mobile */
+/* ── CHANGE 1: Stock price change text — much larger ── */
+.icard-sub{font-family:'Share Tech Mono',monospace;font-size:11px;color:#F5F3F5;letter-spacing:.08em;font-weight:700}
+
 .icard.navy1{border-top:2px solid rgba(68,114,196,.3)}
 .icard.air1{border-top:2px solid rgba(138,158,106,.3)}
 @media(min-width:700px){
@@ -117,14 +96,12 @@ main{flex:1;padding:12px}
   .icard.air1{border-left:1px solid rgba(138,158,106,.3)}
 }
 
-/* TEAMS GRID */
 .tgrid{display:grid;gap:10px;grid-template-columns:1fr}
 @media(min-width:460px){.tgrid{grid-template-columns:1fr 1fr}}
 @media(min-width:760px){.tgrid{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:1060px){.tgrid{grid-template-columns:repeat(4,1fr)}}
 @media(min-width:1360px){.tgrid{grid-template-columns:repeat(5,1fr)}}
 
-/* TEAM CARD */
 .tcard{border-radius:12px;border:1px solid rgba(87,108,168,.2);background:rgba(20,28,58,.88);backdrop-filter:blur(10px);overflow:hidden;position:relative;animation:riseIn .45s cubic-bezier(.22,1,.36,1) both;transition:transform .2s}
 .tcard:hover{transform:translateY(-3px)}
 @keyframes riseIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
@@ -143,7 +120,6 @@ main{flex:1;padding:12px}
 
 .cbody{padding:10px 12px 12px 16px}
 
-/* TOTAL WEALTH */
 .wealth-section{background:rgba(138,158,106,.07);border:1px solid rgba(138,158,106,.25);border-radius:8px;padding:10px 12px;margin-bottom:10px}
 .wealth-top{display:flex;flex-direction:column;align-items:flex-start;margin-bottom:2px;gap:2px}
 .wealth-lbl{font-family:'Share Tech Mono',monospace;font-size:9px;color:#8A9E6A;letter-spacing:.15em}
@@ -161,32 +137,31 @@ main{flex:1;padding:12px}
 .stock-row{display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:11px;color:#8898B4;padding:1px 0}
 .sr-label{flex:1}.sr-qty{color:#5A6E8A;margin:0 8px}.sr-val{color:#A0B0CC;min-width:30px;text-align:right}
 
-/* bonus */
-.bonus-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding:4px 0}
-.bonus-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;color:#8A9E6A;letter-spacing:.12em}
-.bonus-val{font-family:'Bebas Neue',cursive;font-size:16px;color:#9AB274}
+/* ── CHANGE 2: Battle bonus — much larger ── */
+.bonus-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding:6px 10px;background:rgba(138,158,106,.08);border:1px solid rgba(138,158,106,.25);border-radius:7px}
+.bonus-lbl{font-family:'Share Tech Mono',monospace;font-size:11px;color:#8A9E6A;letter-spacing:.12em}
+.bonus-val{font-family:'Bebas Neue',cursive;font-size:28px;color:#9AB274}
 
-/* vehicles */
 .vlbl{font-family:'Share Tech Mono',monospace;font-size:8px;color:rgba(255,255,255,.85);letter-spacing:.15em;margin-bottom:6px}
-.vrow{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
-.vtile{background:rgba(245,243,245,.03);border:1px solid rgba(87,108,168,.15);border-radius:6px;padding:6px 3px;text-align:center;position:relative;overflow:hidden}
-.vtile::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--vc)}
+.vrow{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+
+/* ── CHANGE 3: Vehicle tiles — larger throughout ── */
+.vtile{background:rgba(245,243,245,.03);border:1px solid rgba(87,108,168,.15);border-radius:8px;padding:10px 4px;text-align:center;position:relative;overflow:hidden}
+.vtile::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--vc)}
 .vtile.vtank{--vc:#576CA8}.vtile.vnavy{--vc:#4472C4}.vtile.vair{--vc:#8A9E6A}
 .vtile.wiped{opacity:.2;filter:grayscale(1)}
-.vemo{font-size:14px;line-height:1;margin-bottom:2px}
-.vtag{font-family:'Share Tech Mono',monospace;font-size:7px;color:var(--vc);letter-spacing:.08em;margin-bottom:2px}
-.valive{font-family:'Bebas Neue',cursive;font-size:20px;color:var(--vc);line-height:1}
-.vpts{font-family:'Share Tech Mono',monospace;font-size:7px;color:#8A9E6A;margin-top:1px}
+.vemo{font-size:22px;line-height:1;margin-bottom:3px}
+.vtag{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--vc);letter-spacing:.08em;margin-bottom:3px}
+.valive{font-family:'Bebas Neue',cursive;font-size:32px;color:var(--vc);line-height:1}
+.vpts{font-family:'Share Tech Mono',monospace;font-size:8px;color:#8A9E6A;margin-top:2px}
 .vsub{font-family:'Share Tech Mono',monospace;font-size:7px;color:#5A6E8A;margin-top:1px}
 
-/* score breakdown */
 .score-breakdown{margin-top:8px;background:rgba(39,70,144,.08);border:1px solid rgba(68,114,196,.2);border-radius:6px;padding:6px 8px}
 .sb-row{display:flex;justify-content:space-between;align-items:center;font-family:'Share Tech Mono',monospace;font-size:8px;color:#7A8EAA;padding:2px 0}
 .sb-row.total{border-top:1px solid rgba(68,114,196,.2);margin-top:3px;padding-top:5px;color:#8AAAD8}
 .sb-val{color:#8AAAD8;font-size:9px}
 .sb-row.total .sb-val{font-family:'Bebas Neue',cursive;font-size:16px}
 
-/* LOADER / ERROR */
 .loader{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:50vh;gap:14px}
 .lring{width:44px;height:44px;border:2px solid rgba(87,108,168,.15);border-top-color:#576CA8;border-right-color:#4472C4;border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -248,7 +223,6 @@ const COLORS=[
   {h:'#324F8A',r:'50,79,138'},{h:'#8EA870',r:'142,168,112'},{h:'#6278AB',r:'98,120,171'},
 ];
 
-// ── KEY FIX: destroyedKey matches EXACT sheet column names ──
 const VC={
   Tanks:    {e:'🪖', t:'TANK', c:'vtank', destroyedKey:'TanksDestroyed'},
   NavySeals:{e:'⚓', t:'NAVY', c:'vnavy', destroyedKey:'NavyDestroyed'},
@@ -258,7 +232,6 @@ const VC={
 let hist={TANK:[],NAVY:[],AIR:[]};
 let countdown=5;
 
-// ── COUNTDOWN ──
 function startCountdown(){
   setInterval(()=>{
     countdown--;
@@ -274,7 +247,6 @@ function tickCD(){
   if(txt)txt.textContent=countdown;
 }
 
-// ── FETCH ──
 async function fetchTab(tab){
   const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(tab)}&t=${Date.now()}&r=${Math.random().toString(36).slice(2)}`;
   const r=await fetch(url,{cache:'no-store'});
@@ -298,18 +270,14 @@ async function go(){
 function render(tRows,sRows,pRows){
   document.getElementById('loader').style.display='none';
 
-  // stock map
   const sm={};
   sRows.forEach(r=>{const k=(r['Department']||'').toUpperCase().trim();sm[k]={price:parseFloat(r['Price'])||0,change:parseFloat(r['Change'])||0};});
 
-  // prices/points map — keyed by Vehicle column
   const pm={};
   pRows.forEach(r=>{const v=(r['Vehicle']||'').trim();pm[v]={price:parseFloat(r['Price'])||0,points:parseFloat(r['Points'])||0};});
 
-  // sparkline history
   ['TANK','NAVY','AIR'].forEach(k=>{const p=sm[k]?.price||0;if(p){hist[k].push(p);if(hist[k].length>24)hist[k].shift();}});
 
-  // build + score teams
   const teams=tRows.filter(r=>r['TeamName']).map(team=>{
     let vs=0;
     Object.entries(VC).forEach(([vk,vc])=>{
@@ -334,7 +302,6 @@ function render(tRows,sRows,pRows){
   document.getElementById('ft').textContent=`◈ LAST SYNC: ${new Date().toLocaleTimeString()} ◈ ${teams.length} TEAMS ◈ RANKED BY SCORE ◈`;
 }
 
-// ── 9 INFO CARDS ──
 function buildInfoCards(sm,pm){
   const groups=[
     {color:'tank', emoji:'🪖', name:'Tank',  stockKey:'TANK', vehicleKey:'Tanks',     classes:['tank1','tank2','tank3']},
@@ -347,26 +314,26 @@ function buildInfoCards(sm,pm){
     const ch=sm[stockKey]?.change||0;
     const vPrice=pm[vehicleKey]?.price??'—';
     const vPts=pm[vehicleKey]?.points??'—';
-    const chStr=ch>0?`▲+${ch}`:ch<0?`▼${ch}`:'';
+    const chStr=ch>0?`▲ +${ch}`:ch<0?`▼ ${ch}`:'';
     const chColor=ch>0?'#8A9E6A':ch<0?'#C07080':'#7A8EAA';
     return[
       `<div class="icard ${classes[0]}">
         <div class="icard-emoji">${emoji}</div>
         <div class="icard-label">${name} Stock</div>
         <div class="icard-val">${stockPrice}</div>
-        ${ch!==0?`<div class="icard-sub" style="color:${chColor}">${chStr}</div>`:'<div class="icard-sub">per share</div>'}
+        ${ch!==0?`<div class="icard-sub" style="color:${chColor}">${chStr}</div>`:'<div class="icard-sub" style="color:#5A6E8A">per share</div>'}
       </div>`,
       `<div class="icard ${classes[1]}">
         <div class="icard-emoji">${emoji}</div>
         <div class="icard-label">${name} Cost</div>
         <div class="icard-val">${vPrice}</div>
-        <div class="icard-sub">capital / unit</div>
+        <div class="icard-sub" style="color:#5A6E8A">capital / unit</div>
       </div>`,
       `<div class="icard ${classes[2]}">
         <div class="icard-emoji">${emoji}</div>
         <div class="icard-label">${name} Points</div>
         <div class="icard-val">${vPts}</div>
-        <div class="icard-sub">pts / unit</div>
+        <div class="icard-sub" style="color:#5A6E8A">pts / unit</div>
       </div>`,
     ];
   });
@@ -479,5 +446,3 @@ startCountdown();
 </script>
 </body>
 </html>
-
-
