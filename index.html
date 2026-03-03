@@ -327,7 +327,7 @@ function buildStocks(sm,pm){
       <div class="sdept">${e} ${label}</div>
       <div class="snum">${d.price}</div>
       <div class="sdelta ${ch>0?'tup':ch<0?'tdn':'tfl'}">${ch>0?'▲ +'+ch:ch<0?'▼ '+ch:'— 0'}</div>
-      <div class="spts">Vehicle cost: ${pm[vk]?.price??'?'} cap · ${pm[vk]?.points??'?'} pts/unit</div>
+      <div class="spts"> ${pm[vk]?.points??'?'} pts/unit</div>
       <canvas class="spark" id="sk-${k}"></canvas>
     </div>`;
   }).join('')}</div>`;
@@ -461,3 +461,4 @@ startCountdown();
 </script>
 </body>
 </html>
+
