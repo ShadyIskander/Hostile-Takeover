@@ -423,11 +423,6 @@ function card(team,idx,pm,sm){
       ${bonus>0?`<div class="bonus-row"><div class="bonus-lbl">⚔ BATTLE BONUS</div><div class="bonus-val">+${bonus}</div></div>`:''}
       <div class="vlbl">◈ VEHICLES · ALIVE / SCORE</div>
       <div class="vrow">${vhml}</div>
-      <div class="score-breakdown">
-        ${sbRows}
-        ${bonus>0?`<div class="sb-row"><span>⚔ BATTLE BONUS</span><span class="sb-val" style="color:var(--gold)">${bonus}</span></div>`:''}
-        <div class="sb-row total"><span>TOTAL SCORE</span><span class="sb-val">${team._score}</span></div>
-      </div>
     </div>
   </div>`;
 }
@@ -472,4 +467,5 @@ startCountdown();
 </script>
 </body>
 </html>
+
 
