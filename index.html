@@ -96,7 +96,8 @@ main{flex:1;padding:12px}
 
 .icard-emoji{font-size:16px;line-height:1}
 .icard-label{font-family:'Inter',sans-serif;font-weight:700;font-size:11px;color:var(--text2);letter-spacing:.03em;text-transform:uppercase;line-height:1.3;text-align:center;max-width:50px;margin-bottom:4px;}
-.icard-val{font-family:'Bebas Neue',cursive;font-size:clamp(18px,3vw,26px);color:var(--ic);line-height:1}
+/* EDIT 1: icard-val now uses bold white #F1F5F9 instead of --ic color */
+.icard-val{font-family:'Bebas Neue',cursive;font-size:clamp(18px,3vw,26px);color:#F1F5F9;font-weight:900;line-height:1}
 .icard-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--text2);letter-spacing:.08em;font-weight:700}
 
 .icard.navy1{border-top:2px solid rgba(129,140,248,.3)}
@@ -124,10 +125,11 @@ main{flex:1;padding:12px}
 
 /* ── CARD HEADER ── */
 .chead{padding:10px 12px 8px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(0,0,0,.25);gap:8px}
+/* EDIT 2: crank slightly larger — 16px base, 18px for gold */
 .crank{font-family:'Share Tech Mono',monospace;font-size:14px;color:var(--text3);letter-spacing:.12em;line-height:1;margin-bottom:2px}
 .crank.gold{color:#FBBF24;font-size:16px}
-.cname{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(13px,2vw,16px);letter-spacing:.02em;color:var(--tc);line-height:1.2;word-break:break-word}
-.score-val{font-family:'Bebas Neue',cursive;font-size:clamp(28px,3.5vw,40px);color:#F1F5F9;line-height:1}
+.cname{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(16px,2.5vw,22px);letter-spacing:.02em;color:var(--tc);line-height:1.2;word-break:break-word}
+
 .score-box{text-align:right;flex-shrink:0}
 .score-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.15em;margin-bottom:1px}
 .score-unit{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--muted);margin-left:2px}
@@ -170,7 +172,8 @@ main{flex:1;padding:12px}
 .vtile.vtank{--vc:#94A3B8}.vtile.vnavy{--vc:#7DD3FC}.vtile.vair{--vc:#C9A84C}
 .vtile.wiped{opacity:.2;filter:grayscale(1)}
 .vemo{font-size:22px;line-height:1;margin-bottom:3px}
-.vtag{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--vc);letter-spacing:.08em;margin-bottom:3px}
+/* EDIT 3: vtag larger — 13px up from 9px */
+.vtag{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--vc);letter-spacing:.08em;margin-bottom:3px;font-weight:700}
 .valive{font-family:'Bebas Neue',cursive;font-size:32px;color:var(--vc);line-height:1}
 
 /* ── LOADER / ERROR ── */
@@ -387,7 +390,6 @@ function card(team,idx,pm,sm){
       <div class="valive">${alive}</div>
     </div>`).join('');
 
-  // Stock colors: tank=blue, navy=indigo, air=green — all light enough on dark bg
   const stockPortfolio=[
     {e:'🪖',lbl:'Tank Stock', n:team._tankS, color:'#94A3B8'},
     {e:'⚓',lbl:'Navy Stock', n:team._navyS, color:'#7DD3FC'},
@@ -452,8 +454,3 @@ startCountdown();
 </script>
 </body>
 </html>
-
-
-
-
-
