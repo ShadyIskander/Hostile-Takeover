@@ -98,7 +98,7 @@ main{flex:1;padding:12px}
 .icard-label{font-family:'Inter',sans-serif;font-weight:700;font-size:11px;color:#F1F5F9;letter-spacing:.03em;text-transform:uppercase;line-height:1.3;text-align:center;max-width:50px;margin-bottom:4px;}
 /* EDIT 1: icard-val now uses bold white #F1F5F9 instead of --ic color */
 .icard-val{font-family:'Bebas Neue',cursive;font-size:clamp(18px,3vw,26px);color:var(--ic);line-height:1}
-.icard-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--text2);letter-spacing:.08em;font-weight:700}
+.icard-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:#F1F5F9;letter-spacing:.08em;font-weight:700}
 
 .icard.navy1{border-top:2px solid rgba(129,140,248,.3)}
 .icard.air1{border-top:2px solid rgba(52,211,153,.3)}
@@ -130,6 +130,7 @@ main{flex:1;padding:12px}
 .crank.gold{color:#FBBF24;font-size:16px}
 .cname{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(16px,2.5vw,22px);letter-spacing:.02em;color:var(--tc);line-height:1.2;word-break:break-word}
 
+.score-val{font-family:'Bebas Neue',cursive;font-size:clamp(28px,3.5vw,40px);color:#F1F5F9;line-height:1}
 .score-box{text-align:right;flex-shrink:0}
 .score-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.15em;margin-bottom:1px}
 .score-unit{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--muted);margin-left:2px}
@@ -350,13 +351,13 @@ function buildInfoCards(sm,pm){
         <div class="icard-emoji">${emoji}</div>
         <div class="icard-label">${name} Cost</div>
         <div class="icard-val">${vPrice}</div>
-        <div class="icard-sub" style="color:#94A3B8">capital / unit</div>
+        <div class="icard-sub" style="color:#F1F5F9">capital / unit</div>
       </div>`,
       `<div class="icard ${classes[2]}">
         <div class="icard-emoji">${emoji}</div>
         <div class="icard-label">${name} Points</div>
         <div class="icard-val">${vPts}</div>
-        <div class="icard-sub" style="color:#94A3B8">pts / unit</div>
+        <div class="icard-sub" style="color:#F1F5F9">pts / unit</div>
       </div>`,
     ];
   });
