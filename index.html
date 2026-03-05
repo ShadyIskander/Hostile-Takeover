@@ -25,7 +25,7 @@
   --border2:rgba(148,163,184,0.14);
   --tank:#94A3B8;
   --navy:#7DD3FC;
-  --air:#34D399;
+  --air:#C9A84C;
   --gold:#FBBF24;
   --red:#F87171;
   --wealth-text:#34D399;
@@ -92,7 +92,7 @@ main{flex:1;padding:12px}
 .icard::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--ic)}
 .icard.tank1,.icard.tank2,.icard.tank3{--ic:#94A3B8}
 .icard.navy1,.icard.navy2,.icard.navy3{--ic:#7DD3FC}
-.icard.air1,.icard.air2,.icard.air3{--ic:#34D399}
+.icard.air1,.icard.air2,.icard.air3{--ic:#C9A84C}
 
 .icard-emoji{font-size:16px;line-height:1}
 .icard-label{font-family:'Inter',sans-serif;font-weight:700;font-size:11px;color:var(--text2);letter-spacing:.03em;text-transform:uppercase;line-height:1.3;text-align:center;max-width:50px;margin-bottom:4px;}
@@ -167,7 +167,7 @@ main{flex:1;padding:12px}
 
 .vtile{background:rgba(255,255,255,.02);border:1px solid rgba(148,163,184,.12);border-radius:8px;padding:10px 4px;text-align:center;position:relative;overflow:hidden}
 .vtile::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--vc)}
-.vtile.vtank{--vc:#94A3B8}.vtile.vnavy{--vc:#7DD3FC}.vtile.vair{--vc:#34D399}
+.vtile.vtank{--vc:#94A3B8}.vtile.vnavy{--vc:#7DD3FC}.vtile.vair{--vc:#C9A84C}
 .vtile.wiped{opacity:.2;filter:grayscale(1)}
 .vemo{font-size:22px;line-height:1;margin-bottom:3px}
 .vtag{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--vc);letter-spacing:.08em;margin-bottom:3px}
@@ -391,7 +391,7 @@ function card(team,idx,pm,sm){
   const stockPortfolio=[
     {e:'🪖',lbl:'Tank Stock', n:team._tankS, color:'#94A3B8'},
     {e:'⚓',lbl:'Navy Stock', n:team._navyS, color:'#7DD3FC'},
-    {e:'✈', lbl:'Air Stock',  n:team._airS,  color:'#6EE7B7'},
+    {e:'✈', lbl:'Air Stock',  n:team._airS,  color:'#C9A84C'},
   ].map(({e,lbl,n,color})=>`
     <div class="stock-row">
       <span class="sr-label" style="color:${color}">${e} ${lbl}</span>
@@ -452,6 +452,7 @@ startCountdown();
 </script>
 </body>
 </html>
+
 
 
 
