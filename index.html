@@ -24,7 +24,7 @@
   --border:rgba(148,163,184,0.08);
   --border2:rgba(148,163,184,0.14);
   --tank:#94A3B8;
-  --navy:#818CF8;
+  --navy:#7DD3FC;
   --air:#34D399;
   --gold:#FBBF24;
   --red:#F87171;
@@ -91,7 +91,7 @@ main{flex:1;padding:12px}
 .icard::before{content:'';position:absolute;inset:0;opacity:.05;background:var(--ic)}
 .icard::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--ic)}
 .icard.tank1,.icard.tank2,.icard.tank3{--ic:#94A3B8}
-.icard.navy1,.icard.navy2,.icard.navy3{--ic:#818CF8}
+.icard.navy1,.icard.navy2,.icard.navy3{--ic:#7DD3FC}
 .icard.air1,.icard.air2,.icard.air3{--ic:#34D399}
 
 .icard-emoji{font-size:16px;line-height:1}
@@ -167,7 +167,7 @@ main{flex:1;padding:12px}
 
 .vtile{background:rgba(255,255,255,.02);border:1px solid rgba(148,163,184,.12);border-radius:8px;padding:10px 4px;text-align:center;position:relative;overflow:hidden}
 .vtile::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--vc)}
-.vtile.vtank{--vc:#94A3B8}.vtile.vnavy{--vc:#818CF8}.vtile.vair{--vc:#34D399}
+.vtile.vtank{--vc:#94A3B8}.vtile.vnavy{--vc:#7DD3FC}.vtile.vair{--vc:#34D399}
 .vtile.wiped{opacity:.2;filter:grayscale(1)}
 .vemo{font-size:22px;line-height:1;margin-bottom:3px}
 .vtag{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--vc);letter-spacing:.08em;margin-bottom:3px}
@@ -390,7 +390,7 @@ function card(team,idx,pm,sm){
   // Stock colors: tank=blue, navy=indigo, air=green — all light enough on dark bg
   const stockPortfolio=[
     {e:'🪖',lbl:'Tank Stock', n:team._tankS, color:'#94A3B8'},
-    {e:'⚓',lbl:'Navy Stock', n:team._navyS, color:'#A5B4FC'},
+    {e:'⚓',lbl:'Navy Stock', n:team._navyS, color:'#7DD3FC'},
     {e:'✈', lbl:'Air Stock',  n:team._airS,  color:'#6EE7B7'},
   ].map(({e,lbl,n,color})=>`
     <div class="stock-row">
@@ -452,4 +452,5 @@ startCountdown();
 </script>
 </body>
 </html>
+
 
